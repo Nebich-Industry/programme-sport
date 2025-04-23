@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import Exercise from './components/exercise/Exercise.vue'
+import Seance from './components/seance/Seance.vue'
 </script>
 
 <template>
-  <HelloWorld msg="You did it!" />
-  <Exercise name="Exercice" :rpe="5" :sets="5" :repetitions="20"/>
+  <div class="flex justify-center">
+    <Seance />
+  </div>
 </template>
