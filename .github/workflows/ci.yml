@@ -1,5 +1,5 @@
 name: 🚀 Intégration continue
-on: [push, pull_request]
+on: [push]
 jobs:
     build:
         name: 🛠️ Build
@@ -9,7 +9,9 @@ jobs:
             - uses: oven-sh/setup-bun@v2
               with:
                 bun-version: 1.2.5
-            - run: bun run build
+            - run: |
+                bun install
+                bun run build
 
     test:
         name: 🧪 Tests
