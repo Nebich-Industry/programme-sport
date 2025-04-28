@@ -1,10 +1,6 @@
 <script setup lang="ts">
-    defineProps<{
-        nom: string
-        rpe: number
-        repetitions: number
-        series: number
-    }>()
+import type { ExerciceModel } from '@/model/ExerciceModel';
+defineProps<ExerciceModel>()
 </script>
 
 <template>
