@@ -2,10 +2,11 @@
 import type { ObjectifModel } from '@/model/ObjectifModel';
 import Objectif from '../components/objectif/Objectif.vue';
 import { ref, useId } from 'vue';
+import { useRouter } from 'vue-router';
 const objectifs = ref<ObjectifModel[]>([
-  { objectif: "Soulever 170kg au squat" },
-  { objectif: "Soulever 100kg au bench" },
-  { objectif: "Soulever 180kg au deadlift" }
+  { titre: "Soulever 170kg au squat" },
+  { titre: "Soulever 100kg au bench" },
+  { titre: "Soulever 180kg au deadlift" }
 ])
 const id = useId();
 function ajouterObjectif(event: Event) {
@@ -13,12 +14,19 @@ function ajouterObjectif(event: Event) {
     const input = event.target as HTMLFormElement;
     const objectifInput = input.querySelector('input[type="text"]') as HTMLInputElement;
     if (objectifInput.value.trim() !== '') {
-        objectifs.value.push({ objectif: objectifInput.value });
+        objectifs.value.push({ titre: objectifInput.value });
         objectifInput.value = '';
     }
 }
+function supprimerObjectif(index: number) {
+    objectifs.value.splice(index, 1);
+}
 </script>
 <template>
+    <a class="text-red-600 text-2xl font-bold mb-4 px-14" href="/">
+        <span class="pi pi-arrow-left"></span>
+        Retour
+    </a>
     <form class="flex items-end px-14 gap-2 mb-4" v-on:submit="ajouterObjectif">
       <div class="flex flex-col">
         <label class="text-red-600 w-full mb-2 text-nowrap" :for="id">
@@ -28,5 +36,5 @@ function ajouterObjectif(event: Event) {
       </div>
       <button class="bg-red-600 text-white p-2 rounded"><span class="pi pi-plus"></span></button>
     </form>
-    <Objectif v-for="objectif in objectifs" :objectif="objectif.objectif"/>
+    <Objectif v-for="(objectif, index) in objectifs" :titre="objectif.titre" :est-editable="true" v-on:click-supprimer="supprimerObjectif(index)"/>
 </template>
