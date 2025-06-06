@@ -6,9 +6,9 @@ import { useRouter } from 'vue-router';
 import type { ObjectifModel } from '../model/ObjectifModel';
 
 const objectifs: ObjectifModel[] = [
-  { objectif: "Soulever 170kg au squat" },
-  { objectif: "Soulever 100kg au bench" },
-  { objectif: "Soulever 180kg au deadlift" }
+  { titre: "Soulever 170kg au squat" },
+  { titre: "Soulever 100kg au bench" },
+  { titre: "Soulever 180kg au deadlift" }
 ];
 
 const router = useRouter();
@@ -25,6 +25,6 @@ function handleClick() {
       Vos Objectifs
       <span class="pi pi-plus" v-on:click="handleClick"></span>
     </p>
-    <Objectif v-for="objectif in objectifs" :objectif="objectif.objectif"/>
+    <Objectif v-for="objectif in objectifs" :titre="objectif.titre"/>
   </div>
 </template>

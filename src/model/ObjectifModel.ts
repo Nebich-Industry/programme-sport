@@ -1,3 +1,3 @@
 export interface ObjectifModel {
-    objectif: string;
+    titre: string;
 }
