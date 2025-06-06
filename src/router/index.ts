@@ -1,5 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import App from '../App.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import AjoutObjectif from '@/pages/AjoutObjectif.vue';
+import Acceuil from '@/pages/Acceuil.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,7 +8,12 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: App,
+      component: Acceuil,
+    },
+    {
+      path: '/objectifs/ajout',
+      name: 'ajout-objectif',
+      component: AjoutObjectif
     }
   ],
 })
